@@ -92,10 +92,12 @@
         </h2>
         <p class="text-gray-700 leading-relaxed">
           A Data Science undergraduate at Hanyang University with a deep passion
-          for Generative AI and 3D Computer Vision. Possess end-to-end
-          problem-solving capabilities in complex AI, demonstrated by building
-          RAG/KG systems in Germany at Aidvance and leading a 3D restoration
-          project with the Hanyang University Museum.
+          for Generative AI and 3D Computer Vision, and a growing focus on
+          domain-specialized LLM reasoning. I have built RAG/KG systems at
+          Aidvance (Berlin) and lead a cultural-heritage AI initiative with the
+          Hanyang University Museum, aiming to reduce hallucinations and enable
+          expert-level, context-aware assistance through agentic retrieval and
+          structured knowledge in archaeology and psychotherapy.
         </p>
       </section>
 
@@ -123,7 +125,7 @@
             </p>
           </div>
           <p class="text-gray-600 text-sm italic">
-            Currently completed 3rd year, 1st semester
+            Currently completed 3rd year, 2nd semester
           </p>
         </div>
       </section>
@@ -148,13 +150,21 @@
               </h3>
               <span
                 class="text-[#104d98] font-medium text-sm md:text-base whitespace-nowrap"
-                >Sep 2025 – Present</span
+                data-start="2025-09"
+                data-end="present"
+                >Sep 2025 – Present<span
+                  data-duration
+                  class="text-gray-500 font-normal ml-2"
+                ></span
+              ></span
               >
             </div>
             <p class="text-gray-700 mb-3">
-              Leading an interdisciplinary research project for AI-based
-              cultural heritage classification, 3D restoration, and an
-              interactive exhibition.
+              Leading an interdisciplinary research project to build
+              domain-specialized AI for cultural heritage, combining
+              archaeology-grounded agentic retrieval, artifact understanding,
+              3D reconstruction/generation, and digitally enabled interactive
+              exhibition experiences.
             </p>
             <ul class="space-y-2 text-gray-700">
               <li class="flex items-start gap-2">
@@ -169,12 +179,12 @@
               </li>
               <li class="flex items-start gap-2">
                 <span class="text-[#104d98] font-semibold mt-1"
-                  >(3D Restoration)</span
+                  >(Archaeology-Specialized AI)</span
                 >
                 <span
-                  >Researching and developing a Generative Model (Diffusion,
-                  NeRF variants) pipeline for the 3D restoration and generation
-                  of damaged artifacts.</span
+                  >Developing an Agentic RAG-based, archaeology-specialized AI
+                  by referencing Korean excavation reports and UNESCO SoC
+                  reports.</span
                 >
               </li>
               <li class="flex items-start gap-2">
@@ -184,6 +194,16 @@
                 <span
                   >Designing an automatic classification/analysis system for
                   artifact feature extraction and clustering.</span
+                >
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-[#104d98] font-semibold mt-1"
+                  >(3D Restoration)</span
+                >
+                <span
+                  >Researching and developing a Generative Model (Diffusion,
+                  NeRF variants) pipeline for the 3D restoration and generation
+                  of damaged artifacts.</span
                 >
               </li>
               <li class="flex items-start gap-2">
@@ -208,7 +228,13 @@
               </h3>
               <span
                 class="text-[#104d98] font-medium text-sm md:text-base whitespace-nowrap"
-                >Jan 2024 – Present</span
+                data-start="2024-01"
+                data-end="2025-12"
+                >Jan 2024 – Dec 2025<span
+                  data-duration
+                  class="text-gray-500 font-normal ml-2"
+                ></span
+              ></span
               >
             </div>
             <p class="text-gray-700 mb-3">
@@ -231,7 +257,7 @@
                   >(Experiment)</span
                 >
                 <span
-                  >Analyzed the baseline model's code and currently designing
+                  >Analyzed the baseline model's code and designing
                   and conducting systematic experiments for performance
                   enhancement.</span
                 >
@@ -260,12 +286,19 @@
               </h3>
               <span
                 class="text-[#104d98] font-medium text-sm md:text-base whitespace-nowrap"
-                >Jul 2025 – Present</span
+                data-start="2025-07"
+                data-end="present"
+                >Jul 2025 – Present<span
+                  data-duration
+                  class="text-gray-500 font-normal ml-2"
+                ></span
+              ></span
               >
             </div>
             <p class="text-gray-700 mb-3">
-              Serving as a core member of the AI therapist Co-pilot development
-              team, designing RAG and KG system architectures.
+              Led the development of an AI therapist Co-pilot prototype, taking
+              primary ownership of the RAG and Knowledge Graph system
+              architecture.
             </p>
             <ul class="space-y-2 text-gray-700">
               <li class="flex items-start gap-2">
@@ -313,7 +346,13 @@
               </h3>
               <span
                 class="text-[#104d98] font-medium text-sm md:text-base whitespace-nowrap"
-                >Jan 2024 – Oct 2025</span
+                data-start="2024-01"
+                data-end="2025-10"
+                >Jan 2024 – Oct 2025<span
+                  data-duration
+                  class="text-gray-500 font-normal ml-2"
+                ></span
+              ></span
               >
             </div>
             <p class="text-gray-700">
@@ -322,8 +361,8 @@
               and operation.
             </p>
             <p class="text-gray-700 mt-2">
-              Contributed to winning the Gold Prize at the '2024 Women Inventors
-              EXPO' by planning a specialized program for 'slow learners'.
+              Contributed to winning the Gold Prize at the '2025 Korea International Women's Invention Exposition'
+              ' by planning a specialized program for 'slow learners'.
             </p>
           </div>
         </div>
@@ -375,8 +414,8 @@
           >
             <p class="text-gray-700">
               <span class="font-semibold text-gray-900"
-                >Academic Excellence Scholarship (Ranked 1st in
-                Department)</span
+                >Academic Excellence Scholarship (Ranked 1st in Department,
+                twice)</span
               >
               | Hanyang University, Dept. of Data Science
             </p>
@@ -400,5 +439,49 @@
         </div>
       </section>
     </div>
+
+    <script>
+      (() => {
+        const parseYearMonth = (value) => {
+          // Accepts: "YYYY-MM" or "YYYY-MM-DD"
+          if (!value) return null;
+          const m = String(value).trim().match(/^(\d{4})-(\d{2})(?:-(\d{2}))?$/);
+          if (!m) return null;
+          const year = Number(m[1]);
+          const monthIndex = Number(m[2]) - 1; // 0-based
+          if (!Number.isFinite(year) || !Number.isFinite(monthIndex)) return null;
+          return new Date(year, monthIndex, 1);
+        };
+
+        const formatDuration = (totalMonths) => {
+          const months = Math.max(0, Math.round(totalMonths));
+          const years = Math.floor(months / 12);
+          const rem = months % 12;
+          const parts = [];
+          if (years > 0) parts.push(`${years} yr${years === 1 ? "" : "s"}`);
+          if (rem > 0 || parts.length === 0)
+            parts.push(`${rem} mo${rem === 1 ? "" : "s"}`);
+          return parts.join(" ");
+        };
+
+        document.querySelectorAll("[data-start][data-end]").forEach((el) => {
+          const start = parseYearMonth(el.dataset.start);
+          const end =
+            el.dataset.end === "present"
+              ? new Date()
+              : parseYearMonth(el.dataset.end);
+          const target = el.querySelector("[data-duration]");
+          if (!start || !end || !target) return;
+
+          // Month-level difference (inclusive of the start month)
+          const monthsDiff =
+            (end.getFullYear() - start.getFullYear()) * 12 +
+            (end.getMonth() - start.getMonth()) +
+            1;
+
+          target.textContent = `(${formatDuration(monthsDiff)})`;
+        });
+      })();
+    </script>
   </body>
 </html>
