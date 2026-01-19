@@ -13,3 +13,5 @@
 # Logs
 *.log
 
+# Digital business card (local only)
+card.html
