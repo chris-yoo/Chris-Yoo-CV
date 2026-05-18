@@ -16,3 +16,6 @@
 # Digital business card (local only)
 card.html
 card-ko.html
+
+# Serena MCP server cache/config
+.serena/

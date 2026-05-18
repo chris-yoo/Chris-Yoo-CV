@@ -92,12 +92,13 @@
         </h2>
         <p class="text-gray-700 leading-relaxed">
           A Data Science undergraduate at Hanyang University with a deep passion
-          for Generative AI and 3D Computer Vision, and a growing focus on
+          for Generative AI, 3D Computer Vision, and Robotics + AI
+          (perception, locomotion, manipulation), and a growing focus on
           domain-specialized LLM reasoning. I have built RAG/KG systems at
-          Aidvance (Berlin) and lead a cultural-heritage AI initiative with the
-          Hanyang University Museum, aiming to reduce hallucinations and enable
-          expert-level, context-aware assistance through agentic retrieval and
-          structured knowledge in archaeology and psychotherapy.
+          Aidvance (Berlin), lead a cultural-heritage AI initiative with the
+          Hanyang University Museum, and am extending my research interest
+          toward embodied AI and robot learning — bridging visual/language
+          understanding with physical interaction.
         </p>
       </section>
 
@@ -112,20 +113,35 @@
           <div
             class="flex flex-col md:flex-row md:justify-between md:items-start gap-2"
           >
-            <div>
-              <h3 class="font-semibold text-lg text-gray-900">
-                Hanyang University, Seoul Campus
-              </h3>
-              <p class="text-gray-700">
-                B.S. in Data Science, Department of Data Science
-              </p>
+            <div class="flex items-start gap-3">
+              <img
+                src="image/hanyang-logo.png"
+                alt="Hanyang University"
+                class="w-12 h-12 object-contain flex-shrink-0 mt-1"
+                onerror="this.style.display='none';"
+              />
+              <div>
+                <h3 class="font-semibold text-lg text-gray-900">
+                  Hanyang University, Seoul Campus
+                </h3>
+                <p class="text-gray-700">
+                  B.S. in Data Science, Department of Data Science
+                </p>
+                <p class="text-gray-700 mt-1">
+                  <span class="font-semibold">Cumulative GPA:</span> 4.27 / 4.5
+                  <span class="text-gray-600"
+                    >(4.5 / 4.5 in Fall 2024 &amp; Spring 2025 — 1st in
+                    Department)</span
+                  >
+                </p>
+              </div>
             </div>
             <p class="text-gray-600 text-sm md:text-base whitespace-nowrap">
               Mar 2021 – Feb 2027 (Expected)
             </p>
           </div>
           <p class="text-gray-600 text-sm italic">
-            Currently completed 3rd year, 2nd semester
+            Currently enrolled in 4th year
           </p>
         </div>
       </section>
@@ -144,10 +160,18 @@
             <div
               class="flex flex-col md:flex-row md:justify-between md:items-start gap-2 mb-2"
             >
-              <h3 class="font-semibold text-lg text-gray-900">
-                HEIR Project (Hanyang University Museum Collaboration) | Team
-                Leader & AI Researcher
-              </h3>
+              <div class="flex items-start gap-3">
+                <img
+                  src="image/HEIR-logo.png"
+                  alt="HEIR Project"
+                  class="w-10 h-10 object-contain flex-shrink-0 mt-1"
+                  onerror="this.style.display='none';"
+                />
+                <h3 class="font-semibold text-lg text-gray-900">
+                  HEIR Project (Hanyang University Museum Collaboration) | Team
+                  Leader & AI Researcher
+                </h3>
+              </div>
               <span
                 class="text-[#104d98] font-medium text-sm md:text-base whitespace-nowrap"
                 data-start="2025-09"
@@ -201,18 +225,37 @@
                   >(3D Restoration)</span
                 >
                 <span
-                  >Researching and developing a Generative Model (Diffusion,
-                  NeRF variants) pipeline for the 3D restoration and generation
-                  of damaged artifacts.</span
+                  >Researching a Gaussian Splatting–based generative pipeline
+                  for 3D restoration and generation of damaged artifacts.</span
                 >
               </li>
               <li class="flex items-start gap-2">
                 <span class="text-[#104d98] font-semibold mt-1"
-                  >(Personalization)</span
+                  >(3D World Model)</span
                 >
                 <span
-                  >Developing an interactive module for visitors to experience
-                  the era by synthesizing their photos</span
+                  >Developing a 3D world model–driven virtual-reality
+                  exhibition pipeline to produce immersive cultural-heritage
+                  content.</span
+                >
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-[#104d98] font-semibold mt-1"
+                  >(Outcomes)</span
+                >
+                <span
+                  >Submitted a paper to the Korean Archaeology Society (2026);
+                  presented at a national curator workshop attended by ~60
+                  archaeologists and professors; built and deployed BONDA — an
+                  archaeology-specialized agentic RAG with a custom data
+                  pipeline and vector DB
+                  (<a
+                    href="https://www.bonda-heir.com"
+                    target="_blank"
+                    rel="noopener"
+                    class="text-[#104d98] hover:underline"
+                    >bonda-heir.com</a
+                  >).</span
                 >
               </li>
             </ul>
@@ -264,6 +307,20 @@
               </li>
             </ul>
           </div>
+
+          <!-- Other Projects -->
+          <div class="border-l-4 border-[#104d98] pl-4 md:pl-6">
+            <h3 class="font-semibold text-lg text-gray-900 mb-1">
+              Other Projects
+            </h3>
+            <p class="text-gray-700">
+              <span class="font-semibold">Humanoid Autonomous Manipulation
+              Simulation (MATLAB, 2026)</span> — solo end-to-end Atlas humanoid
+              simulation covering LiDAR perception, SLAM, RRT* navigation, LIPM
+              walking, IK, and PPO residual manipulation; built as a self-study
+              exercise to deepen robotics fundamentals.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -281,9 +338,17 @@
             <div
               class="flex flex-col md:flex-row md:justify-between md:items-start gap-2 mb-2"
             >
-              <h3 class="font-semibold text-lg text-gray-900">
-                Aidvance GmbH (Berlin, Germany) | Freelance AI Engineer
-              </h3>
+              <div class="flex items-start gap-3">
+                <img
+                  src="image/aidvance-logo.png"
+                  alt="Aidvance GmbH"
+                  class="w-10 h-10 object-contain flex-shrink-0 mt-1"
+                  onerror="this.style.display='none';"
+                />
+                <h3 class="font-semibold text-lg text-gray-900">
+                  Aidvance GmbH (Berlin, Germany) | Freelance AI Engineer
+                </h3>
+              </div>
               <span
                 class="text-[#104d98] font-medium text-sm md:text-base whitespace-nowrap"
                 data-start="2025-07"
@@ -333,6 +398,16 @@
                   Next.js).</span
                 >
               </li>
+              <li class="flex items-start gap-2">
+                <span class="text-[#104d98] font-semibold mt-1"
+                  >(Memory &amp; Evaluation)</span
+                >
+                <span
+                  >Developing a long-term memory module for the AI therapist
+                  and a RAG-based evaluation platform to systematically test it
+                  (in progress).</span
+                >
+              </li>
             </ul>
           </div>
 
@@ -378,7 +453,8 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-700">
           <div>
             <p class="font-semibold text-gray-900 mb-1">
-              <span class="text-[#104d98]">Languages:</span> Python, JavaScript
+              <span class="text-[#104d98]">Languages:</span> Python, JavaScript,
+              MATLAB
             </p>
           </div>
           <div>
@@ -408,21 +484,96 @@
         >
           Honors & Activities
         </h2>
-        <div class="space-y-3">
+
+        <h3 class="font-semibold text-gray-900 mb-2">Military Service</h3>
+        <div class="space-y-2 mb-5">
+          <div
+            class="flex flex-col md:flex-row md:justify-between md:items-start gap-2"
+          >
+            <div class="flex items-start gap-3">
+              <img
+                src="image/rokmc-logo.png"
+                alt="Republic of Korea Marine Corps"
+                class="w-8 h-8 object-contain flex-shrink-0 mt-1"
+                onerror="this.style.display='none';"
+              />
+              <p class="text-gray-700">
+                <span class="font-semibold text-gray-900"
+                  >Republic of Korea Marine Corps (ROKMC)</span
+                >
+                | Sergeant (SGT), Enlisted Class 1278 — 6th Marine Brigade,
+                Baengnyeong Island
+              </p>
+            </div>
+            <span
+              class="text-[#104d98] font-medium text-sm md:text-base whitespace-nowrap"
+              >Jan 2022 – Jul 2023<span
+                class="text-gray-500 font-normal ml-2"
+                >(1 yr 6 mos)</span
+              ></span
+            >
+          </div>
+        </div>
+
+        <h3 class="font-semibold text-gray-900 mb-2">Scholarships</h3>
+        <div class="space-y-2 mb-5">
           <div
             class="flex flex-col md:flex-row md:justify-between md:items-start gap-2"
           >
             <p class="text-gray-700">
               <span class="font-semibold text-gray-900"
-                >Academic Excellence Scholarship (Ranked 1st in Department,
-                twice)</span
+                >Hanyang Brain Scholarship (Academic Excellence)</span
               >
-              | Hanyang University, Dept. of Data Science
+              | Awarded for ranking 1st in the Department (GPA 4.5 / 4.5)
             </p>
             <span class="text-gray-600 text-sm md:text-base whitespace-nowrap"
-              >Fall 2024, Spring 2025</span
+              >Spring 2025, Fall 2025</span
             >
           </div>
+          <div
+            class="flex flex-col md:flex-row md:justify-between md:items-start gap-2"
+          >
+            <p class="text-gray-700">
+              <span class="font-semibold text-gray-900"
+                >Hanyang Global IC-PBL Frontier Scholarship</span
+              >
+              | Hanyang University
+            </p>
+            <span class="text-gray-600 text-sm md:text-base whitespace-nowrap"
+              >Fall 2025</span
+            >
+          </div>
+          <div
+            class="flex flex-col md:flex-row md:justify-between md:items-start gap-2"
+          >
+            <p class="text-gray-700">
+              <span class="font-semibold text-gray-900"
+                >Undergraduate Leadership Scholarship</span
+              >
+              | College of Engineering (Software), Hanyang University
+            </p>
+            <span class="text-gray-600 text-sm md:text-base whitespace-nowrap"
+              >Spring 2025, Fall 2025</span
+            >
+          </div>
+          <div
+            class="flex flex-col md:flex-row md:justify-between md:items-start gap-2"
+          >
+            <p class="text-gray-700">
+              <span class="font-semibold text-gray-900"
+                >Academic Excellence Scholarship</span
+              >
+              | Hanyang University, Dept. of Data Science (Ranked 1st in
+              Department, GPA 4.5 / 4.5)
+            </p>
+            <span class="text-gray-600 text-sm md:text-base whitespace-nowrap"
+              >Fall 2024</span
+            >
+          </div>
+        </div>
+
+        <h3 class="font-semibold text-gray-900 mb-2">Awards &amp; Programs</h3>
+        <div class="space-y-2 mb-5">
           <div
             class="flex flex-col md:flex-row md:justify-between md:items-start gap-2"
           >
@@ -436,7 +587,22 @@
               >2025</span
             >
           </div>
+          <div
+            class="flex flex-col md:flex-row md:justify-between md:items-start gap-2"
+          >
+            <p class="text-gray-700">
+              <span class="font-semibold text-gray-900"
+                >Gold Prize, Korea International Women's Invention
+                Exposition</span
+              >
+              | Storm Study program for slow learners
+            </p>
+            <span class="text-gray-600 text-sm md:text-base whitespace-nowrap"
+              >2025</span
+            >
+          </div>
         </div>
+
       </section>
     </div>
 
