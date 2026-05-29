@@ -78,6 +78,14 @@
                 <i class="fab fa-github text-[#104d98]"></i>
                 <span>GitHub</span>
               </a>
+              <a
+                href="https://chris-yoo.github.io/Chris-Yoo-CV/"
+                target="_blank"
+                class="flex items-center gap-2 text-gray-700 hover:text-[#104d98] transition-colors"
+              >
+                <i class="fas fa-globe text-[#104d98]"></i>
+                <span>Web CV</span>
+              </a>
             </div>
           </div>
         </div>
@@ -603,6 +611,427 @@
           </div>
         </div>
 
+      </section>
+
+      <!-- Research Portfolio (Appendix) -->
+      <section class="mb-8">
+        <h2
+          class="text-2xl font-bold text-[#104d98] mb-4 pb-2 border-b-2 border-[#104d98]"
+        >
+          Research Portfolio
+        </h2>
+        <p class="text-gray-600 italic text-sm mb-6">
+          Appendix — extended technical detail on selected projects from the
+          Research Experience and Industry Experience sections, plus
+          from-scratch implementations and independent study.
+        </p>
+
+        <!-- ① Selected Research Projects -->
+        <h3 class="text-xl font-bold text-[#104d98] mb-4 mt-6">
+          ① Selected Research Projects
+        </h3>
+
+        <div class="space-y-6 mb-8">
+          <!-- 1. Bonda -->
+          <div class="border-l-4 border-[#104d98] pl-4 md:pl-6">
+            <div
+              class="flex flex-col md:flex-row md:justify-between md:items-start gap-2 mb-3"
+            >
+              <h4 class="font-semibold text-lg text-gray-900">
+                Bonda — Agentic AI for Korean Cultural Heritage
+              </h4>
+              <span
+                class="text-[#104d98] font-medium text-sm md:text-base whitespace-nowrap"
+                >HEIR Project · 2025–Present</span
+              >
+            </div>
+            <p class="text-gray-700 mb-3 leading-relaxed">
+              A domain-specialized agentic AI for Korean archaeology and UNESCO
+              cultural-heritage research. The motivation was that this field's
+              primary sources have two properties that make generic LLM/RAG
+              unreliable: the corpus exists as
+              <strong>scanned PDFs requiring OCR</strong>, and
+              <strong>terminology is heavily mixed</strong> — the same
+              artifact, period, or technique is referred to by different names
+              across reports, periods, and curators.
+            </p>
+            <p class="text-gray-700 mb-3 leading-relaxed">
+              We addressed both ends. The data pipeline crawls the source
+              documents and pushes images through OCR into structured text.
+              Retrieval is then split into purpose-specific indices so each one
+              solves the right problem: report-level vectors for
+              <em>"which document?"</em>, semantic chunks for
+              <em>"where in the document?"</em>, and a
+              <strong>13K-term Korean archaeology dictionary</strong> as a
+              dedicated index that gives the agent a way to ground inconsistent
+              terminology to canonical entries. A 12-tool LangGraph agent
+              orchestrates the three, with a per-turn tool-call budget, a
+              zero-hit retry policy, and an 18-scenario evaluation harness
+              scored on three weighted rubrics.
+            </p>
+            <p class="text-gray-700 leading-relaxed">
+              The significance is that this is a working example of building a
+              specialized AI for a domain LLMs cannot serve out of the box —
+              and that the design choices (OCR pipeline, dictionary as
+              retrieval index, measurable reliability budget) come directly
+              from the corpus's actual failure modes, not from a generic agent
+              template. Live at
+              <a
+                href="https://www.bonda-heir.com"
+                target="_blank"
+                rel="noopener"
+                class="text-[#104d98] hover:underline"
+                >bonda-heir.com</a
+              >.
+            </p>
+          </div>
+
+          <!-- 2. Heirloom 3D Reconstruction -->
+          <div class="border-l-4 border-[#104d98] pl-4 md:pl-6">
+            <div
+              class="flex flex-col md:flex-row md:justify-between md:items-start gap-2 mb-3"
+            >
+              <h4 class="font-semibold text-lg text-gray-900">
+                Heirloom 3D Reconstruction — Sparse-View 3D Gaussian Splatting
+              </h4>
+              <span
+                class="text-[#104d98] font-medium text-sm md:text-base whitespace-nowrap"
+                >HEIR Project · 2026</span
+              >
+            </div>
+            <p class="text-gray-700 mb-3 leading-relaxed">
+              A 3D reconstruction study targeting cultural-heritage artifacts.
+              The motivation was concrete: standard photogrammetry pipelines
+              expect ~50 images per object, and
+              <strong>museums can't realistically capture that many</strong>
+              per artifact — fragile artifacts, lighting constraints, and
+              access policies limit what's possible. Sparse-view reconstruction
+              is the only viable path, so we studied whether single-view
+              regularizers can close the train–test PSNR gap of 3D Gaussian
+              Splatting under that regime.
+            </p>
+            <p class="text-gray-700 mb-3 leading-relaxed">
+              We built a strong <strong>v22 baseline</strong> combining
+              FreeSplatter initialization, monocular depth supervision, and
+              adaptive Gaussian control — reaching
+              <strong>28.08 dB test PSNR</strong> on NeRF-synthetic Lego. Then
+              ran <strong>five controlled ablations</strong> (DropGaussian,
+              depth-smoothness variants, DNGaussian) through AST-patched
+              single-axis variants, with every one degrading performance. The
+              investigation produced a failure taxonomy (count reduction,
+              gradient-driven disk formation, multi-factor interaction) and
+              disproved the obvious "test views are too far from training
+              views" hypothesis through worst-K view analysis.
+            </p>
+            <p class="text-gray-700 leading-relaxed">
+              The significance is the <em>direction</em>: the ceiling here is
+              method-level, not regularization-tunable, so the next step toward
+              museum-grade reconstruction needs a generative prior (CAT3D-style
+              diffusion priors) rather than more loss terms.
+            </p>
+          </div>
+
+          <!-- 3. Ceramic Classification -->
+          <div class="border-l-4 border-[#104d98] pl-4 md:pl-6">
+            <div
+              class="flex flex-col md:flex-row md:justify-between md:items-start gap-2 mb-3"
+            >
+              <h4 class="font-semibold text-lg text-gray-900">
+                Ceramic Classification — Agentic Oracle System
+              </h4>
+              <span
+                class="text-[#104d98] font-medium text-sm md:text-base whitespace-nowrap"
+                >HEIR Project · 2026–Present</span
+              >
+            </div>
+            <p class="text-gray-700 mb-3 leading-relaxed">
+              A fine-grained classification system for modern Korean ceramics
+              (1880–1950, Haengdang-dong excavation). The motivation was scale:
+              <strong>over 20,000 ceramic artifacts were excavated</strong> at
+              this single site, and hand-classifying them at curator-defensible
+              quality is infeasible — but standard supervised approaches have
+              no labeled corpus to learn from.
+            </p>
+            <p class="text-gray-700 mb-3 leading-relaxed">
+              We built a multi-agent system that produces classifications from
+              evidence rather than from a model's prior. The architecture rests
+              on three pillars: a <strong>four-phase pipeline</strong>
+              (deterministic baseline → evidence-sufficiency gates → iterative
+              reasoning → emit-time invariants), a
+              <strong>16-rule constitution enforced structurally</strong>
+              (evidence hierarchy, UNKNOWN-over-low-confidence, per-artifact
+              isolation, mandatory tool-invocation logged by a shell wrapper
+              the LLM cannot forge), and a
+              <strong>closed-loop self-improvement</strong> controlled by
+              holdout regression on five fixed artifacts. A curator's
+              spreadsheet of 108 annotated marks becomes interpretable weak
+              supervision.
+            </p>
+            <p class="text-gray-700 leading-relaxed">
+              The significance is that the system reasons over
+              <em>evidence</em>, not over confidence scores — on the real
+              HD-JGJ-012 case, it correctly chose a 0.45-confidence observation
+              over a 0.92 alternative because the KB grammar attested it.
+              That's the property a curator can actually defend.
+            </p>
+          </div>
+
+          <!-- 4. Textual Inversion on VAR -->
+          <div class="border-l-4 border-[#104d98] pl-4 md:pl-6">
+            <div
+              class="flex flex-col md:flex-row md:justify-between md:items-start gap-2 mb-3"
+            >
+              <h4 class="font-semibold text-lg text-gray-900">
+                Textual Inversion on VAR (Infinity) — Personalization Study
+              </h4>
+              <span
+                class="text-[#104d98] font-medium text-sm md:text-base whitespace-nowrap"
+                >Undergraduate Research · 2025</span
+              >
+            </div>
+            <p class="text-gray-700 mb-3 leading-relaxed">
+              A mechanistic study of whether Textual Inversion transfers from
+              diffusion models to Visual Autoregressive models — specifically
+              Infinity. The motivation was a gap in the literature: the
+              existing personalization approach for VAR (ARbooth) deliberately
+              sidesteps TI by training an Infinity-side token instead, but
+              doesn't fully explain <em>why</em> the direct TI route doesn't
+              work.
+            </p>
+            <p class="text-gray-700 mb-3 leading-relaxed">
+              I ran three experiments — a TI-like setup with a single trainable
+              token, strict TI (learning the T5 embedding directly), and an
+              attention-map analysis across layers 1/8/16/24/32 at three
+              resolutions. The strict-TI run collapsed to NaN within 1–2
+              iterations and stayed that way through six mitigation strategies.
+              I traced the failure to an intrinsically unstable gradient path
+              (T5 embedding → T5 transformer → hidden state → VAR).
+            </p>
+            <p class="text-gray-700 leading-relaxed">
+              The significance is the <em>why</em>: the diagnosis explains the
+              mechanism behind ARbooth's design choice rather than just
+              observing that it works, and surfaces a generalizable PyTorch
+              constraint (embedding tables' <code>requires_grad</code> is
+              per-table, not per-token) that anyone porting TI to a
+              non-diffusion model family will hit.
+            </p>
+          </div>
+
+          <!-- 5. Humanoid Autonomous Manipulation -->
+          <div class="border-l-4 border-[#104d98] pl-4 md:pl-6">
+            <div
+              class="flex flex-col md:flex-row md:justify-between md:items-start gap-2 mb-3"
+            >
+              <h4 class="font-semibold text-lg text-gray-900">
+                Humanoid Autonomous Manipulation Simulation
+              </h4>
+              <span
+                class="text-[#104d98] font-medium text-sm md:text-base whitespace-nowrap"
+                >Independent Project · 2026</span
+              >
+            </div>
+            <p class="text-gray-700 mb-3 leading-relaxed">
+              A personal project undertaken to develop hands-on grounding in
+              robotics AI — built end-to-end in MATLAB R2025b on a 30-DOF Atlas
+              humanoid model. I implemented all eight modules solo:
+              <strong>perception</strong> (LiDAR raycasting → RANSAC ground
+              removal → Euclidean clustering),
+              <strong>mapping and navigation</strong> (pose-graph SLAM + RRT*
+              on inflated occupancy maps + VFH/Pure-Pursuit reactive control),
+              <strong>bipedal locomotion</strong> (LIPM gait with dual-chain
+              IK), and <strong>manipulation</strong> (a 13-state pick-and-place
+              FSM with a PPO residual policy on top of classical IK).
+            </p>
+            <p class="text-gray-700 mb-3 leading-relaxed">
+              End-to-end success across 50 random scenarios rose from a
+              <strong>22% baseline to 77%</strong>.
+            </p>
+            <p class="text-gray-700 leading-relaxed">
+              The most interesting finding wasn't about reinforcement learning.
+              PPO lifted manipulation from 85% to 96% <em>in isolation</em>,
+              but barely moved end-to-end success — because by then the
+              bottleneck had shifted to walking alignment and perception. The
+              right question for embodied learning isn't "RL or classical?";
+              it's <em>which</em> sub-system actually limits the system, and
+              that answer migrates as fixes land.
+            </p>
+          </div>
+
+          <!-- 6. Heirloom Platform (brief) -->
+          <div class="border-l-4 border-[#104d98] pl-4 md:pl-6">
+            <div
+              class="flex flex-col md:flex-row md:justify-between md:items-start gap-2 mb-3"
+            >
+              <h4 class="font-semibold text-lg text-gray-900">
+                Heirloom — Cultural-Heritage Platform
+              </h4>
+              <span
+                class="text-[#104d98] font-medium text-sm md:text-base whitespace-nowrap"
+                >HEIR Project · 2026–Present</span
+              >
+            </div>
+            <p class="text-gray-700 leading-relaxed">
+              A cultural-heritage digitization and management platform —
+              motivated by the absence of any unified system for museums to
+              easily digitize and curate their collections (current workflows
+              are fragmented across institutions, with no shared schema). We
+              designed and built the platform on Next.js 16 + FastAPI +
+              Postgres. The defining choice was an
+              <strong>ontology-as-schema</strong> approach (13 tables,
+              hierarchical taxonomies, JSONB detail blocks, 12 enums) so that
+              artifact labels are <em>valid by construction</em> — the database
+              itself is the contract between human curators and the AI
+              classifiers consuming it.
+            </p>
+          </div>
+        </div>
+
+        <!-- ② Applied AI Engineering -->
+        <h3 class="text-xl font-bold text-[#104d98] mb-4 mt-6">
+          ② Applied AI Engineering @ Aidvance, Berlin
+        </h3>
+
+        <div class="border-l-4 border-[#104d98] pl-4 md:pl-6 mb-8">
+          <p class="text-gray-700 mb-4 leading-relaxed">
+            Lead engineer on the AI Therapist Co-pilot at a Berlin startup — an
+            internship that converted to an ongoing freelance contract
+            (Jul 2025 – Present). The work covered the full surface of a
+            mental-health AI product:
+          </p>
+          <ul class="space-y-3 text-gray-700 mb-4">
+            <li class="leading-relaxed">
+              <span class="font-semibold text-gray-900"
+                >Therapy Copilot dashboard (flagship).</span
+              >
+              Owned the full stack — Next.js 14 frontend, six FastAPI services
+              (LLM, RAG, Neo4j KG, entity extraction, Hume AI audio with
+              prosody-based emotion detection, PDF report generation), Prisma
+              data model, Docker Compose deployment. 55+ endpoints; 18+ KG
+              entity types, 40+ relationships.
+            </li>
+            <li class="leading-relaxed">
+              <span class="font-semibold text-gray-900"
+                >Therapy Knowledge Graph + Dynamic Querying.</span
+              >
+              Replaced an LLM-generated-Cypher chain with a LangGraph ReAct
+              agent exposing four retrieval tools over Neo4j (DSM-5 + patient
+              graphs). 55-case test suite, 100% pass.
+            </li>
+            <li class="leading-relaxed">
+              <span class="font-semibold text-gray-900"
+                >DSM-5 Knowledge-Graph extraction pipeline.</span
+              >
+              Five-stage chapter-aware pipeline (Document AI → Gemini with 22
+              chapter-specific Pydantic schemas → Neo4j) — 214 disorders, 598
+              criteria, <strong>710 sub-criteria (+45%)</strong> over the
+              previous version; 21/22 chapters at 100% coverage.
+            </li>
+            <li class="leading-relaxed">
+              <span class="font-semibold text-gray-900"
+                >Document-Based Memory architecture (research deliverable).</span
+              >
+              Surveyed 10+ memory systems (Mem0, Zep, MemGPT, etc.) and
+              specified a HIPAA-compliant dual-path retrieval architecture
+              (sync hybrid search under 1.5 s + async LLM synthesis) with
+              vector-deletion handling, RLS patient isolation, and a P0/P1/P2
+              roadmap for an MGH pilot.
+            </li>
+          </ul>
+          <p class="text-gray-700 leading-relaxed">
+            The connecting theme: turning an unfamiliar clinical domain into
+            structured AI systems through ontology design, RAG, and agentic
+            orchestration — shipping under production constraints while keeping
+            the design defensible to non-engineering stakeholders.
+          </p>
+        </div>
+
+        <!-- ③ From-Scratch Implementations & Independent Study -->
+        <h3 class="text-xl font-bold text-[#104d98] mb-4 mt-6">
+          ③ From-Scratch Implementations &amp; Independent Study
+        </h3>
+
+        <div class="border-l-4 border-[#104d98] pl-4 md:pl-6">
+          <p class="text-gray-700 mb-4 leading-relaxed">
+            Independent study is implementation-first: read the paper, build
+            the core mechanism from scratch (loss, attention, scheduler,
+            matching), then debug numerically until metrics converge. Selected
+            implementations:
+          </p>
+          <ul class="space-y-3 text-gray-700 mb-4">
+            <li class="leading-relaxed">
+              <span class="font-semibold text-gray-900"
+                >DETR — Transformer object detection (PyTorch from
+                scratch).</span
+              >
+              Built end-to-end including ResNet50 backbone, sinusoidal
+              positional encoding, encoder/decoder attention, and
+              <strong>Hungarian bipartite matching</strong> as the loss
+              assignment. Trained on PASCAL VOC 2007 to
+              <strong>mAP 0.697</strong>; fixed a positional-encoding bug by
+              hand-tracing the embedding computation.
+            </li>
+            <li class="leading-relaxed">
+              <span class="font-semibold text-gray-900"
+                >Stable Diffusion Personalization — TI + Custom Diffusion.</span
+              >
+              Implemented both methods on the same SD checkpoint and ran a
+              head-to-head: TI alone is too low-capacity for complex subjects;
+              selective K/V fine-tuning with a
+              <strong>dual learning rate</strong> (5e-4 text / 1e-6 UNet)
+              closed the gap. Best <strong>CLIP-I 0.798</strong>.
+            </li>
+            <li class="leading-relaxed">
+              <span class="font-semibold text-gray-900"
+                >Image Captioning — RNN / LSTM / Transformer in plain
+                NumPy.</span
+              >
+              Wrote every layer by hand, forward and backward — vanilla and
+              LSTM cells, multi-head attention with causal masking, positional
+              encoding. Same COCO subset across all three; final loss 3.57 →
+              1.12 → <strong>0.029</strong> confirms the modeling story
+              end-to-end.
+            </li>
+            <li class="leading-relaxed">
+              <span class="font-semibold text-gray-900"
+                >RetinaNet + Focal Loss.</span
+              >
+              Full FPN with from-scratch focal loss. Swapping BCE for focal
+              collapsed classification loss from 13.37 to 0.15 — a clean
+              experimental demonstration of the paper's class-imbalance
+              argument.
+            </li>
+            <li class="leading-relaxed">
+              <span class="font-semibold text-gray-900"
+                >Stable Diffusion from scratch (~1000 lines PyTorch).</span
+              >
+              Complete LDM pipeline at the layer level (VAE encoder/decoder,
+              U-Net, CLIP text encoder, DDPM scheduler, classifier-free
+              guidance) — built during a 6-month structured self-study on
+              zero-shot segmentation at Baik Lab. Surfaced concrete
+              architectural choices that reading alone hides.
+            </li>
+          </ul>
+          <p class="text-gray-700 mb-3 leading-relaxed">
+            <span class="font-semibold text-gray-900">Foundational.</span>
+            ResNet34 painter-classification (Kaggle: 0.378 → 0.513 via
+            domain-aware augmentation) · k-NN vectorization (49 min → 23 s;
+            96.97% FashionMNIST) · soft-margin SVM with from-scratch hinge loss
+            (67.4% CIFAR-10) · classic CV (transforms, color spaces, filters,
+            PSNR).
+          </p>
+          <p class="text-gray-700 leading-relaxed">
+            <span class="font-semibold text-gray-900">Paper reviews.</span>
+            Reading notes from papers I've worked through — mostly computer
+            vision →
+            <a
+              href="https://app.notion.com/p/Paper-review-2a514ac9e77580dd9f87cc7cf151960e?source=copy_link"
+              target="_blank"
+              rel="noopener"
+              class="text-[#104d98] hover:underline"
+              >Notion — Paper Review</a
+            >
+          </p>
+        </div>
       </section>
     </div>
 
