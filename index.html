@@ -86,13 +86,21 @@
                 <i class="fas fa-globe text-[#104d98]"></i>
                 <span>Web CV</span>
               </a>
+              <a
+                href="#ko"
+                id="language-toggle"
+                class="flex items-center gap-2 text-gray-700 hover:text-[#104d98] transition-colors"
+              >
+                <i class="fas fa-language text-[#104d98]"></i>
+                <span>한국어 CV</span>
+              </a>
             </div>
           </div>
         </div>
       </header>
 
       <!-- Profile Summary -->
-      <section class="mb-8">
+      <section id="profile-section" class="mb-8">
         <h2
           class="text-2xl font-bold text-[#104d98] mb-4 pb-2 border-b-2 border-[#104d98]"
         >
@@ -111,7 +119,7 @@
       </section>
 
       <!-- Education -->
-      <section class="mb-8">
+      <section id="education-section" class="mb-8">
         <h2
           class="text-2xl font-bold text-[#104d98] mb-4 pb-2 border-b-2 border-[#104d98]"
         >
@@ -157,7 +165,7 @@
       <!-- Experience sections (Industry presented before Research) -->
       <div class="flex flex-col">
       <!-- Research Experience -->
-      <section class="mb-8 order-2">
+      <section id="research-section" class="mb-8 order-2">
         <h2
           class="text-2xl font-bold text-[#104d98] mb-4 pb-2 border-b-2 border-[#104d98]"
         >
@@ -305,7 +313,7 @@
       </section>
 
       <!-- Industry Experience -->
-      <section class="mb-8 order-1">
+      <section id="industry-section" class="mb-8 order-1">
         <h2
           class="text-2xl font-bold text-[#104d98] mb-4 pb-2 border-b-2 border-[#104d98]"
         >
@@ -548,7 +556,7 @@
       </div>
 
       <!-- Technical Skills -->
-      <section class="mb-8">
+      <section id="skills-section" class="mb-8">
         <h2
           class="text-2xl font-bold text-[#104d98] mb-4 pb-2 border-b-2 border-[#104d98]"
         >
@@ -582,7 +590,7 @@
       </section>
 
       <!-- Honors & Activities -->
-      <section class="mb-8">
+      <section id="honors-section" class="mb-8">
         <h2
           class="text-2xl font-bold text-[#104d98] mb-4 pb-2 border-b-2 border-[#104d98]"
         >
@@ -710,7 +718,7 @@
       </section>
 
       <!-- Research Portfolio (Appendix) -->
-      <section class="mb-8">
+      <section id="portfolio-section" class="mb-8">
         <h2
           class="text-2xl font-bold text-[#104d98] mb-4 pb-2 border-b-2 border-[#104d98]"
         >
@@ -1181,6 +1189,228 @@
 
     <script>
       (() => {
+        const sections = Object.fromEntries(
+          [
+            "profile",
+            "education",
+            "research",
+            "industry",
+            "skills",
+            "honors",
+            "portfolio",
+          ].map((name) => [
+            name,
+            document.querySelector(`#${name}-section`),
+          ]),
+        );
+        const english = Object.fromEntries(
+          Object.entries(sections).map(([name, section]) => [
+            name,
+            section.innerHTML,
+          ]),
+        );
+        const toggle = document.querySelector("#language-toggle");
+
+        const ko = {
+          profile: `
+            <h2 class="text-2xl font-bold text-[#104d98] mb-4 pb-2 border-b-2 border-[#104d98]">프로필</h2>
+            <p class="text-gray-700 leading-relaxed">한양대학교 데이터사이언스 전공 학부생으로, 생성형 AI, 3D 컴퓨터 비전, 로보틱스 및 AI(인지, 보행·이동, 조작) 분야에 깊은 열정을 가지고 있으며 도메인 특화 LLM 추론으로 관심 영역을 넓혀가고 있습니다. 베를린 소재 Aidvance에서 RAG 및 지식 그래프(KG) 시스템을 구축했고, 한양대학교 박물관과 함께 문화유산 AI 이니셔티브를 이끌고 있으며, 시각 및 언어적 이해를 물리적 상호작용과 연결하는 체화된 AI 및 로봇 학습으로 연구 관심을 확장하고 있습니다.</p>`,
+          education: `
+            <h2 class="text-2xl font-bold text-[#104d98] mb-4 pb-2 border-b-2 border-[#104d98]">학력</h2>
+            <div class="space-y-2"><div class="flex flex-col md:flex-row md:justify-between md:items-start gap-2"><div class="flex items-start gap-3"><img src="image/hanyang-logo.png" alt="한양대학교" class="w-12 h-12 object-contain flex-shrink-0 mt-1" /><div><h3 class="font-semibold text-lg text-gray-900">한양대학교 서울캠퍼스</h3><p class="text-gray-700">데이터사이언스학부 데이터사이언스 전공 학사</p><p class="text-gray-700 mt-1"><span class="font-semibold">누적 학점:</span> 4.29 / 4.5 <span class="text-gray-600">(2024년 2학기 및 2025년 1학기 4.5 / 4.5 — 학부 수석)</span></p></div></div><p class="text-gray-600 text-sm md:text-base whitespace-nowrap">2021년 3월 – 2027년 2월 (졸업 예정)</p></div><p class="text-gray-600 text-sm italic">현재 4학년 재학 중</p></div>`,
+          research: `
+            <h2 class="text-2xl font-bold text-[#104d98] mb-4 pb-2 border-b-2 border-[#104d98]">연구 경험</h2>
+            <div class="space-y-6"><div class="border-l-4 border-[#104d98] pl-4 md:pl-6"><h3 class="font-semibold text-lg text-gray-900">서울대학교 DYROS (Dynamic Robotic Systems Lab) | 학부 연구 인턴</h3><p class="text-[#104d98] font-medium text-sm md:text-base mt-1">2026년 7월 – 현재</p><p class="text-gray-700 mt-3">로봇 학습을 위한 Sim-to-Real 전이 연구를 수행하고 있습니다. 실제 환경의 실패로부터 간접 추론하는 대신 Sim-to-Real 갭을 직접 측정하고, 그 측정을 바탕으로 캘리브레이션·도메인 랜덤화·온라인 적응 중 어떤 기법이 갭을 실질적으로 줄이는지 판단합니다.</p></div><div class="border-l-4 border-[#104d98] pl-4 md:pl-6"><h3 class="font-semibold text-lg text-gray-900">학부 연구 인턴 (생성형 AI 및 개인화)</h3><p class="text-[#104d98] font-medium text-sm md:text-base mt-1">2024년 1월 – 2025년 12월</p><p class="text-gray-700 mt-3">시각적 자기회귀(VAR) 모델에 개인화 기법을 적용하는 연구에 참여했습니다. 관련 논문을 비교 분석해 베이스라인을 선정하고, 모델 코드를 분석하여 성능 향상을 위한 체계적인 실험을 설계·수행했습니다.</p></div><div class="border-l-4 border-[#104d98] pl-4 md:pl-6"><h3 class="font-semibold text-lg text-gray-900">기타 프로젝트</h3><p class="text-gray-700 mt-2"><strong>휴머노이드 자율 조작 시뮬레이션 (MATLAB, 2026)</strong> — LiDAR 인지, SLAM, RRT* 내비게이션, LIPM 보행, IK, PPO 잔차 조작을 아우르는 Atlas 휴머노이드 엔드투엔드 시뮬레이션을 단독 구현했습니다.</p></div></div>`,
+          industry: `
+            <h2 class="text-2xl font-bold text-[#104d98] mb-4 pb-2 border-b-2 border-[#104d98]">산업 경험</h2>
+            <div class="space-y-6"><div class="border-l-4 border-[#104d98] pl-4 md:pl-6"><h3 class="font-semibold text-lg text-gray-900">HEIR | 공동창업자·대표</h3><p class="text-[#104d98] font-medium text-sm md:text-base mt-1">2025년 9월 – 현재</p><p class="text-gray-700 mt-3">문화유산은 보전·연구되어야 할 중요한 자산이자 대한민국 정체성의 근간입니다. 기술 도입과 혁신이 소외된 이 분야를 발전시키고자 대학 동기들과 AI 스타트업 HEIR를 창업했습니다. 대표로서 한양대학교 박물관과의 파트너십을 바탕으로 문화유산 생태계를 혁신하는 프로젝트를 이끌고 있습니다.</p><ul class="space-y-2 text-gray-700 mt-3"><li><strong>(문화유산 특화 AI: Bonda)</strong> 국내 최초의 문화유산 특화 AI를 기획·개발했습니다. 한양대학교 박물관 시범 도입에서 두 달 이상 걸리던 문헌 조사 시간을 단축하고 새로운 인사이트를 제공했으며, 약 50명의 학예사 대상 시연 후 서울대학교·연세대학교·한백문화유산연구원과 도입을 논의 중입니다.</li><li><strong>(박물관 DB 관리 시스템)</strong> 학예사가 유물을 촬영·디지털화해 DB로 구축할 수 있는 시스템을 개발해 한양대학교 박물관 실무에 도입했으며, 국가기관 제출 형식 자동 변환으로 행정 효율을 높였습니다.</li><li><strong>(저비용 문화유산 콘텐츠 제작 서비스)</strong> 소규모 박물관도 AI로 몰입형 전시 콘텐츠를 저비용으로 제작할 수 있는 서비스를 기획했으며, 한양대학교 박물관 기획 전시에서 첫선을 보일 예정입니다.</li></ul></div><div class="border-l-4 border-[#104d98] pl-4 md:pl-6"><h3 class="font-semibold text-lg text-gray-900">Aidvance GmbH (독일 베를린) | 프리랜서 AI 엔지니어</h3><p class="text-[#104d98] font-medium text-sm md:text-base mt-1">2025년 7월 – 2026년 7월</p><p class="text-gray-700 mt-3">AI 심리상담사를 통해 정신건강 문제를 해결하는 베를린 헬스케어 스타트업에 초기 4인 팀으로 합류했습니다. 현지 인턴십 후 약 1년간 프리랜서 AI 엔지니어로 근무하며 투자 유치와 스케일업에 기여했습니다.</p><ul class="space-y-2 text-gray-700 mt-3"><li><strong>(심리상담사용 AI 코파일럿)</strong> CEO 직접 피칭을 통해 프로젝트를 성사시키고, 기획부터 배포까지 총괄하여 두 달 만에 실제 서비스로 런칭했습니다.</li><li><strong>(DSM-5 기반 지식 그래프)</strong> 상담팀과의 협업 및 빠른 학습을 바탕으로 AI 응답 신뢰도를 높이는 특화 지식 베이스를 구축했습니다.</li><li><strong>(메모리·평가 인프라)</strong> DB 유지 비용을 줄이는 Markdown 기반 메모리 시스템과 비개발자 상담사가 AI 출력을 평가할 수 있는 전용 UI를 설계했습니다.</li></ul></div><div class="border-l-4 border-[#104d98] pl-4 md:pl-6"><h3 class="font-semibold text-lg text-gray-900">스톰스터디, 꿈담길 | 풀스택 개발자</h3><p class="text-[#104d98] font-medium text-sm md:text-base mt-1">2024년 1월 – 2025년 10월</p><p class="text-gray-700 mt-3">학습에 어려움을 겪는 학생도 효과적으로 공부할 수 있도록 돕는 에듀테크 스타트업에서, 다수의 프로그램을 기획부터 풀스택 개발까지 주도했습니다.</p><ul class="space-y-2 text-gray-700 mt-3"><li><strong>(인지능력 향상 프로그램)</strong> 경계선 지능 학습자를 위한 교육용 게임의 기획·개발·테스트를 총괄해 2025 여성발명왕EXPO 금상 수상에 기여했습니다.</li><li><strong>(영어 학습 프로그램)</strong> 단어·쓰기·듣기에 게임 요소를 접목한 학습 프로그램을 사용자 경험 중심으로 구축했습니다.</li><li><strong>(어드민 페이지 개편)</strong> PHP 기반 레거시 어드민 시스템을 Next.js 기반으로 전면 개편해 운영 효율과 관리 편의성을 높였습니다.</li></ul></div></div>`,
+          skills: `<h2 class="text-2xl font-bold text-[#104d98] mb-4 pb-2 border-b-2 border-[#104d98]">기술 역량</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-700"><p><strong class="text-[#104d98]">언어:</strong> Python, JavaScript, MATLAB</p><p><strong class="text-[#104d98]">AI / ML:</strong> PyTorch, LangChain, LangGraph, Scikit-learn</p><p><strong class="text-[#104d98]">웹 / DB:</strong> FastAPI, Next.js, Neo4j</p><p><strong class="text-[#104d98]">DevOps / 도구:</strong> Git, Docker</p></div>`,
+          honors: `<h2 class="text-2xl font-bold text-[#104d98] mb-4 pb-2 border-b-2 border-[#104d98]">수상 및 활동</h2><div class="space-y-5 text-gray-700"><div><h3 class="font-semibold text-gray-900 mb-1">병역</h3><p><strong>대한민국 해병대</strong> | 병장, 1278기 — 해병대 제6여단, 백령도 <span class="text-gray-600">(2022년 1월 – 2023년 7월)</span></p></div><div><h3 class="font-semibold text-gray-900 mb-1">장학금</h3><p><strong>한양브레인 장학금</strong> | 2024년 2학기·2025년 1학기 학부 수석으로 전액 장학금 2회 수혜</p><p><strong>한양 글로벌 IC-PBL 프론티어 장학금</strong> | 2025년 2학기</p><p><strong>학부 리더십 장학금</strong> | 2025년 1학기, 2학기</p></div><div><h3 class="font-semibold text-gray-900 mb-1">수상 및 프로그램</h3><p><strong>글로벌 프론티어 프로그램 선발 (팀장)</strong> | 한양대학교, 2025</p><p><strong>여성발명왕EXPO 금상</strong> | 스톰스터디 느린학습자 프로그램, 2025</p></div></div>`,
+          portfolio: `<h2 class="text-2xl font-bold text-[#104d98] mb-4 pb-2 border-b-2 border-[#104d98]">연구 포트폴리오</h2><div id="research-portfolio-ko" class="whitespace-pre-line text-gray-700 leading-relaxed"></div>`,
+        };
+
+        const renderKorean = () => {
+          renderEnglish();
+          const set = (target, text) => {
+            const element =
+              typeof target === "string" ? document.querySelector(target) : target;
+            element.textContent = text;
+          };
+          const setHtml = (selector, html) => {
+            document.querySelector(selector).innerHTML = html;
+          };
+          const researchCards = sections.research.querySelectorAll(
+            ":scope > .space-y-6 > .border-l-4",
+          );
+          const industryCards = sections.industry.querySelectorAll(
+            ":scope > .space-y-6 > .border-l-4",
+          );
+          const formatProjectItems = (items) => {
+            items.forEach((item) => {
+              item.className = "flex flex-col items-start gap-1";
+              const label = item.querySelector("span");
+              label.textContent = label.textContent.trim().replace(/^\(|\)$/g, "");
+              label.className = "inline-block text-[#104d98] font-semibold bg-blue-50 px-2 py-1 rounded-md leading-snug";
+            });
+          };
+          const setDate = (card, value) => {
+            card.querySelector("[data-start]").childNodes[0].nodeValue = value;
+          };
+
+          set("#profile-section h2", "Profile Summary");
+          setHtml(
+            "#profile-section > p",
+            "한양대학교 데이터사이언스 전공 학부생으로, Generative AI, 3D Computer Vision, Robotics + AI (perception, locomotion, manipulation) 분야에 깊은 열정을 가지고 있으며 domain-specialized LLM reasoning으로 관심 영역을 넓혀가고 있습니다. 베를린 소재 Aidvance에서 RAG 및 Knowledge Graph(KG) system을 구축했고, 한양대학교 박물관과 함께 문화유산 AI 이니셔티브를 이끌고 있으며, 시각 및 언어적 이해를 물리적 상호작용과 연결하는 Embodied AI 및 Robot Learning으로 연구 관심을 확장하고 있습니다.",
+          );
+          set("#education-section h2", "Education");
+          set("#education-section h3", "한양대학교 서울캠퍼스");
+          set("#education-section h3 + p", "데이터사이언스학부 데이터사이언스 전공 학사");
+          setHtml("#education-section h3 + p + p", '<span class="font-semibold">누적 학점:</span> 4.29 / 4.5 <span class="text-gray-600">(2024년 2학기 및 2025년 1학기 4.5 / 4.5 — 학부 수석)</span>');
+          set("#education-section .whitespace-nowrap", "2021년 3월 – 2027년 2월 (졸업 예정)");
+          set("#education-section .italic", "현재 4학년 재학 중");
+
+          set("#research-section h2", "Research Experience");
+          setDate(researchCards[0], "2026년 7월 – 현재");
+          set("#research-section h3", "서울대학교 동역학 로봇 시스템 연구실 (DYROS, SNU) | 학부 연구생 인턴");
+          setHtml(researchCards[0].querySelector("p").outerHTML ? "#research-section .space-y-6 > div:first-child > p" : "", "<strong>로봇 학습을 위한 Sim-to-Real 전이 기법 연구:</strong> 실제 환경에서의 실패로부터 간접 추론하는 대신 Sim-to-Real 갭을 직접 측정하고, 해당 측정을 바탕으로 어떤 기법(캘리브레이션, 도메인 랜덤화, 온라인 적응)이 실질적으로 갭을 줄이는지 분석 및 검증.");
+          const dyrosItems = researchCards[0].querySelectorAll("li");
+          dyrosItems[0].innerHTML = '<span class="text-[#104d98] font-semibold mt-1">(Sim-to-Real)</span><span>Husky mobile base와 dual Franka FR3 arms를 대상으로 NVIDIA Isaac Sim / Isaac Lab 환경에서 gap-measurement baseline 및 calibration loop 구축.</span>';
+          dyrosItems[1].innerHTML = '<span class="text-[#104d98] font-semibold mt-1">(인프라 구축)</span><span>재사용 가능한 research infrastructure 개발 — 공개되어 있지 않은 Husky + dual FR3 simulation asset 제작, Reinforcement Learning(RL) training environment 구축, config-driven experiment pipeline (PyTorch, rsl_rl, ROS2) 개발.</span>';
+          formatProjectItems(dyrosItems);
+          set(researchCards[1].querySelector("h3"), "학부 연구 인턴 (생성형 AI 및 개인화)");
+          setDate(researchCards[1], "2024년 1월 – 2025년 12월");
+          setHtml("#research-section .space-y-6 > div:nth-child(2) > p", "VAR model에 Personalization 기법을 적용하여 고성능 모델을 개발하는 연구 수행.");
+          const undergraduateItems = researchCards[1].querySelectorAll("li");
+          undergraduateItems[0].innerHTML = '<span class="text-[#104d98] font-semibold mt-1">(연구 분석)</span><span>\'VAR Personalization\' 관련 핵심 논문들을 서베이 및 비교 분석하여 baseline model 선정.</span>';
+          undergraduateItems[1].innerHTML = '<span class="text-[#104d98] font-semibold mt-1">(실험 및 검증)</span><span>베이스라인 모델의 코드베이스를 분석하고, 성능 향상을 위한 체계적인 가설 수립 및 실험 설계·수행.</span>';
+          formatProjectItems(undergraduateItems);
+          set(researchCards[2].querySelector("h3"), "기타 프로젝트");
+          setHtml("#research-section .space-y-6 > div:nth-child(3) > p", '<span class="font-semibold">Humanoid Autonomous Manipulation Simulation (MATLAB, 2026)</span>: LiDAR perception, SLAM, RRT*-based navigation, LIPM gait, IK, PPO residual manipulation을 아우르는 30-DOF Atlas humanoid simulation 전 과정을 1인 end-to-end로 구현; robotics control 및 learning 역량을 심화하기 위한 independent project.');
+
+          set("#industry-section h2", "Industry Experience");
+          setDate(industryCards[0], "2025년 9월 – 현재");
+          set(industryCards[0].querySelector("h3"), "HEIR | 공동창업자·대표");
+          setHtml(industryCards[0].querySelector("p").outerHTML ? "#industry-section .space-y-6 > div:nth-child(1) > p" : "", "문화유산은 마땅히 보전되고 연구되어야 할 중요한 자산이자, 대한민국의 정체성을 하나로 모으는 근간입니다. 하지만 그 중요성에 비해 타 산업 분야보다 기술 도입과 혁신이 소외되어 있다는 문제의식을 느꼈습니다. 이에 대학 동기들과 함께 AI 기술을 접목해 문화유산 분야의 발전을 이끌겠다는 비전을 품고 'HEIR'라는 스타트업 팀을 창업했습니다. 현재 대표를 맡아 팀을 이끌고 있으며, 한양대학교 박물관과 파트너십을 맺고 문화유산 생태계를 혁신하는 프로젝트들을 주도하고 있습니다.");
+          const heirItems = industryCards[0].querySelectorAll("li");
+          heirItems[0].innerHTML = '<span class="text-[#104d98] font-semibold mt-1">(문화유산 특화 AI: Bonda)</span><span>의료, 공학, 과학 등 타 분야는 AI를 통해 엄청난 발전을 이룬 반면, 문화유산 분야는 AI의 적용이 더뎠습니다. 이를 해결하고자 국내 최초로 문화유산에 특화된 AI를 기획 및 개발했습니다. 한양대학교 박물관을 대상으로 시범 도입을 진행한 결과, 연구자들이 기존 2개월 이상 소요되던 문헌 조사 시간을 획기적으로 단축했을 뿐만 아니라 AI를 통해 새로운 인사이트까지 얻을 수 있었다는 긍정적인 평가를 받았습니다. 약 50명의 학예사 대상 워크숍 시연에서도 뜨거운 반응을 이끌어냈으며, 이를 바탕으로 현재 서울대학교, 연세대학교, 한백문화유산연구원과 서비스 도입을 논의 중입니다.</span>';
+          heirItems[1].innerHTML = '<span class="text-[#104d98] font-semibold mt-1">(박물관 DB 관리 시스템)</span><span>박물관들의 가장 큰 페인포인트 중 하나는 수장고에 보관된 방대한 유물들이 제대로 분류되지 않아 연구나 전시에 온전히 활용되지 못한다는 점이었습니다. 이에 학예사들이 직관적으로 유물을 촬영하고 디지털화하여 DB로 구축할 수 있는 관리 시스템을 개발했고, 현재 한양대학교 박물관 실무에 전면 도입되어 사용 중입니다. 나아가 국가기관에 의무적으로 제출해야 하는 포맷으로 데이터를 자동 변환하는 기능까지 추가하여 박물관의 행정 업무 효율을 대폭 끌어올렸습니다.</span>';
+          heirItems[2].innerHTML = '<span class="text-[#104d98] font-semibold mt-1">(저비용 문화유산 콘텐츠 제작 서비스)</span><span>국립중앙박물관에 관람객이 몰리는 핵심 이유는 관람객이 몰입할 수 있는 다양한 전시 콘텐츠가 있기때문입니다. 하지만 이러한 콘텐츠는 막대한 비용이 든다는 한계가 있어, 소규모 박물관들은 유리 진열장에 유물을 배치하는 전통적인 방식에만 의존해야 했고 이는 관람객의 발길이 끊기는 결과로 이어졌습니다. 저희는 이러한 문제에 착안하여 AI를 활용해 몰입형 전시 콘텐츠를 저비용으로 구축할 수 있는 서비스를 기획했습니다. 해당 서비스는 한양대학교 박물관에서 실제 기획 전시로 첫선을 보일예정입니다.</span>';
+          formatProjectItems(heirItems);
+          set(industryCards[1].querySelector("h3"), "Aidvance GmbH (독일 베를린) | 프리랜서 AI 엔지니어");
+          setDate(industryCards[1], "2025년 7월 – 2026년 7월");
+          setHtml("#industry-section .space-y-6 > div:nth-child(2) > p", "Aidvance는 심리 질환에 대한 사회적 편견과 정보 부재라는 난제를 AI 심리상담사를 통해 해결하고, 누구나 적시에 맞춤형 치료를 받는 세상을 만드는 글로벌 리딩 스타트업입니다. 해당 회사에 사회적 문제를 기술로 푼다는 비전에 공감하여 초기 4인 팀으로 합류하였고 (현재 약 10인규모), 베를린 현지에서 인턴 진행 후 귀국 후 프리랜서로 약 1년간 근무하며, 회사의 대규모 투자 유치와 가파른 스케일업 과정에 핵심 AI 엔지니어로서 기여하였습니다.");
+          const aidvanceItems = industryCards[1].querySelectorAll("li");
+          aidvanceItems[0].innerHTML = '<span class="text-[#104d98] font-semibold mt-1">(심리상담사용 AI 코파일럿 기획 및 런칭)</span><span>인턴십 진행당시 고품질 학습 데이터 확보와 상담사 업무 효율성 극대화라는 핵심 니즈를 동시에 해결하는 솔루션을 기획하였습니다. 이후 CEO 대상 직접 피칭 및 설득을 통해 프로젝트를 성사시키고 해당프로젝트를 총괄하여 2개월 만에 실제 서비스로 런칭하였습니다.</span>';
+          aidvanceItems[1].innerHTML = '<span class="text-[#104d98] font-semibold mt-1">(DSM-5 기반 지식그래프(KG) 구축)</span><span>AI 모델의 답변 신뢰도를 높이기 위한 특화 지식 베이스 구축하였습니다. 심리상담분야에 대한 도메인 지식이 없어 어려움이 있었지만, 심리상담팀원과 소통, 빠른 학습력을 바탕으로 필요 정보를 습득하여 지식베이스를 구축할 수 있었습니다.</span>';
+          aidvanceItems[2].innerHTML = '<span class="text-[#104d98] font-semibold mt-1">(비용 효율화를 위한 메모리 시스템 및 자체 평가 인터페이스 구축)</span><span>기존 DB의 막대한 유지 비용 문제를 선제적으로 파악하여 MD 기반 시스템으로 비용 최적화 달성하였습니다. 비개발자(상담사)도 직관적으로 AI를 평가할 수 있는 전용 UI를 기획하여 사내 피드백 루프를 혁신하였습니다.</span>';
+          formatProjectItems(aidvanceItems);
+          set(industryCards[2].querySelector("h3"), "스톰스터디, 꿈담길 | 풀스택 개발자");
+          setDate(industryCards[2], "2024년 1월 – 2025년 10월");
+          setHtml("#industry-section .space-y-6 > div:nth-child(3) > p", "스톰스터디는 학습 능력이 다소 부족한 학생들도 효과적으로 공부할 수 있도록 교육 방식을 혁신하는 에듀테크 스타트업입니다. 저는 개발팀 소속으로 근무하며, 사용자가 더 쉽고 몰입감 있게 학습할 수 있는 다수의 에듀테크 프로그램 기획부터 개발까지 전 과정을 주도했습니다.");
+          setHtml("#industry-section .space-y-6 > div:nth-child(3) > ul", '<li class="flex items-start gap-2"><span class="text-[#104d98] font-semibold mt-1">(경계선 지능 장애를 위한 인지능력 향상 프로그램 기획 및 수상)</span><span>타겟 유저의 특성을 분석하여, 인지능력 향상에 최적화된 교육용 게임 프로그램의 기획, 개발, 테스트를총괄했습니다. 이를 통해 회사가 \'게이미피케이션 기반 AI 학습 서비스 시스템\'으로 2025 여성발명왕EXPO 금상을 수상하는 데 핵심적으로 기여했습니다.</span></li><li class="flex items-start gap-2"><span class="text-[#104d98] font-semibold mt-1">(영어 학습 프로그램 구축)</span><span>단어, 쓰기, 듣기 등 자칫 지루할 수 있는 학습 과정에 다양한 게임 요소를 접목한 프로그램을 기획했습니다. 학생들이 더 쉽고 재미있게 몰입할 수 있도록 사용자 경험을 고려하여 프로젝트의 전 과정을 주도 했습니다.</span></li><li class="flex items-start gap-2"><span class="text-[#104d98] font-semibold mt-1">(사내 운영 효율화를 위한 어드민 페이지 개편)</span><span>단순한 프론트엔드 개발을 넘어 사내 운영진의 업무 효율성과 관리 편의성을 높이는 데 목적을 두고, 기존 PHP 기반의 레거시 어드민 시스템을 Next.js 기반으로 전면 개편하는 프로젝트를 수행했습니다.</span></li>');
+          formatProjectItems(industryCards[2].querySelectorAll("li"));
+
+          set("#skills-section h2", "Technical Skills");
+          set("#honors-section h2", "Honors & Activities");
+          Array.from(sections.honors.querySelectorAll("h3")).forEach((el, index) => set(el, ["병역", "장학금", "수상 및 프로그램"][index]));
+          const honorLines = sections.honors.querySelectorAll("p");
+          honorLines[0].innerHTML = '<span class="font-semibold text-gray-900">대한민국 해병대</span> | 병장, 1278기 — 해병대 제6여단, 백령도';
+          honorLines[1].innerHTML = '<span class="font-semibold text-gray-900">한양브레인 장학금 (성적 우수)</span> | 2024년 2학기 및 2025년 1학기 학부 수석, 전액 장학금 2회 수혜 (평점 4.5 / 4.5)';
+          honorLines[2].innerHTML = '<span class="font-semibold text-gray-900">한양 글로벌 IC-PBL 프론티어 장학금</span> | 한양대학교';
+          honorLines[3].innerHTML = '<span class="font-semibold text-gray-900">학부 리더십 장학금</span> | 한양대학교 공과대학(소프트웨어)';
+          honorLines[4].innerHTML = '<span class="font-semibold text-gray-900">AI-Dea 리딩 장학금</span> | 한양대학교';
+          honorLines[5].innerHTML = '<span class="font-semibold text-gray-900">글로벌 프론티어 프로그램 선발 (팀장)</span> | 한양대학교 (HEIR 프로젝트)';
+          honorLines[6].innerHTML = '<span class="font-semibold text-gray-900">여성발명왕EXPO 금상</span> | 스톰스터디 느린학습자 프로그램';
+
+          set("#portfolio-section h2", "Research Portfolio");
+          setHtml("#portfolio-section > p", "부록 — 연구 경험과 산업 경험의 주요 프로젝트 기술 내용, 밑바닥부터의 구현 및 독립 연구 정리");
+          document.documentElement.lang = "ko";
+          document.title = "유승민 | 이력서";
+          toggle.href = "#en";
+          toggle.querySelector("span").textContent = "English CV";
+          fetch("research-portfolio-ko.txt")
+            .then((response) => response.text())
+            .then((text) => {
+              const lines = text.trim().split("\n").map((line) => line.trim()).filter(Boolean);
+              const titleStarts = ["Sim-to-Real Gap", "Bonda", "Heirloom 3D", "도자기 분류", "VAR", "휴머노이드", "Heirloom —"];
+              const starts = lines.map((line, index) => titleStarts.some((title) => line.startsWith(title)) ? index : -1).filter((index) => index >= 0);
+              const intro = lines[0];
+              const cards = starts.map((start, index) => lines.slice(start, starts[index + 1] ?? lines.findIndex((line) => line.startsWith("베를린 헬스케어"))));
+              const portfolio = sections.portfolio;
+              const appendix = portfolio.querySelector("p");
+              appendix.textContent = intro;
+              const oldContent = Array.from(portfolio.children).slice(2);
+              oldContent.forEach((element) => element.remove());
+              const heading = document.createElement("h3");
+              heading.className = "text-xl font-bold text-[#104d98] mb-4 mt-6";
+              heading.textContent = "① Selected Research Projects";
+              portfolio.append(heading);
+              const list = document.createElement("div");
+              list.className = "space-y-6 mb-8";
+              cards.forEach((card) => {
+                const item = document.createElement("div");
+                item.className = "border-l-4 border-[#104d98] pl-4 md:pl-6";
+                item.innerHTML = `<div class="flex flex-col md:flex-row md:justify-between md:items-start gap-2 mb-3"><h4 class="font-semibold text-lg text-gray-900">${card[0]}</h4><span class="text-[#104d98] font-medium text-sm md:text-base whitespace-nowrap">${card[1]}</span></div>${card.slice(2).map((paragraph) => `<p class="text-gray-700 mb-3 leading-relaxed">${paragraph}</p>`).join("")}`;
+                list.append(item);
+              });
+              portfolio.append(list);
+              const renderDetailSection = (title, content) => {
+                const sectionTitle = document.createElement("h3");
+                sectionTitle.className = "text-xl font-bold text-[#104d98] mb-4 mt-6";
+                sectionTitle.textContent = title;
+                const card = document.createElement("div");
+                card.className = "border-l-4 border-[#104d98] pl-4 md:pl-6 mb-8";
+                content.forEach((paragraph) => {
+                  const item = document.createElement("p");
+                  item.className = "text-gray-700 mb-3 leading-relaxed";
+                  item.textContent = paragraph.replace(/^- /, "");
+                  card.append(item);
+                });
+                portfolio.append(sectionTitle, card);
+              };
+              const aidvanceStart = lines.findIndex((line) => line.startsWith("베를린 헬스케어"));
+              const implementationStart = lines.findIndex((line) => line.startsWith("독립 연구는 구현"));
+              renderDetailSection(
+                "② Applied AI Engineering @ Aidvance, Berlin",
+                lines.slice(aidvanceStart, implementationStart),
+              );
+              renderDetailSection(
+                "③ From-Scratch Implementations & Independent Study",
+                lines.slice(implementationStart),
+              );
+              const paperReview = document.createElement("p");
+              paperReview.className = "text-gray-700 leading-relaxed";
+              paperReview.innerHTML = '<span class="font-semibold text-gray-900">논문 리뷰.</span> 직접 정리한 컴퓨터 비전 및 AI 논문 분석 노트 → <a href="https://app.notion.com/p/Paper-review-2a514ac9e77580dd9f87cc7cf151960e?source=copy_link" target="_blank" rel="noopener" class="text-[#104d98] hover:underline">Notion — Paper Review</a>';
+              portfolio.append(paperReview);
+            })
+            .catch(() => {
+              document.querySelector("#research-portfolio-ko").innerHTML = '<a class="text-[#104d98] hover:underline" href="research-portfolio-ko.txt">부록 원문 열기</a>';
+            });
+        };
+
+        const renderEnglish = () => {
+          Object.entries(english).forEach(([name, content]) => {
+            sections[name].innerHTML = content;
+          });
+          document.documentElement.lang = "en";
+          document.title = "CV - Data Science Professional";
+          toggle.href = "#ko";
+          toggle.querySelector("span").textContent = "한국어 CV";
+        };
+
+        toggle.addEventListener("click", (event) => {
+          event.preventDefault();
+          if (document.documentElement.lang === "ko") {
+            history.replaceState(null, "", "#en");
+            renderEnglish();
+          } else {
+            history.replaceState(null, "", "#ko");
+            renderKorean();
+          }
+        });
+
+        if (location.hash === "#ko") renderKorean();
+
         const parseYearMonth = (value) => {
           // Accepts: "YYYY-MM" or "YYYY-MM-DD"
           if (!value) return null;
